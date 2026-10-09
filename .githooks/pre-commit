@@ -1,0 +1,4 @@
+#!/bin/sh
+# Formats and lints before every commit.
+set -e
+make fmt-check lint size

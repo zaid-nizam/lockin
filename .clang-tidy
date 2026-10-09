@@ -1,0 +1,35 @@
+# Everything that applies to C, warnings as errors. Each switched-off check
+# has its reason next to it.
+Checks: >
+  bugprone-*,
+  cert-*,
+  clang-analyzer-*,
+  misc-*,
+  performance-*,
+  portability-*,
+  readability-*,
+  -bugprone-easily-swappable-parameters,
+  -cert-err33-c,
+  -clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling,
+  -misc-include-cleaner,
+  -readability-identifier-length,
+  -readability-isolate-declaration,
+  -readability-magic-numbers,
+  -readability-math-missing-parentheses,
+  -readability-uppercase-literal-suffix
+# easily-swappable-parameters: (x, y) and (width, height) pairs are the domain.
+# cert-err33-c: flags every snprintf and fputs; truncation is handled by sbuf.
+# DeprecatedOrUnsafeBufferHandling: asks for the _s functions, absent in glibc.
+# include-cleaner: wants a direct include for every libc symbol.
+# isolate-declaration: two buffers of one kind read fine on one line.
+# identifier-length: x, y, c and r are the right names in drawing code.
+# magic-numbers: screen layouts are coordinates.
+# math-missing-parentheses: a * b + c is clear as written.
+# uppercase-literal-suffix: style only.
+WarningsAsErrors: '*'
+CheckOptions:
+  readability-function-size.LineThreshold: 40
+  readability-function-size.ParameterThreshold: 4
+  # clang-tidy counts the function body as a level, so 4 here is 3 in the code.
+  readability-function-size.NestingThreshold: 4
+  readability-function-cognitive-complexity.Threshold: 15

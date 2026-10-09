@@ -1,0 +1,8 @@
+# Default rules, minus build output: build/ holds a clone of the semgrep
+# rules, whose examples contain fake secrets on purpose.
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "build output"
+paths = ['''^build/''']

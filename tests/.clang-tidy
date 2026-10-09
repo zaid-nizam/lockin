@@ -1,0 +1,6 @@
+# Tests follow the same checks as src, minus two that measure the CHECK
+# macros (each expands to a do/if) instead of the test.
+InheritParentConfig: true
+Checks: >
+  -readability-function-cognitive-complexity,
+  -readability-function-size
